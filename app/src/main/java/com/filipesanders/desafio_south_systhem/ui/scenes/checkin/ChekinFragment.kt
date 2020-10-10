@@ -1,4 +1,4 @@
-package com.filipesanders.desafio_south_systhem.ui.scenes.eventDetails
+package com.filipesanders.desafio_south_systhem.ui.scenes.checkin
 
 import android.os.Bundle
 import android.util.Log
@@ -11,28 +11,26 @@ import androidx.lifecycle.Observer
 import com.filipesanders.desafio_south_systhem.R
 import com.filipesanders.desafio_south_systhem.services.ServiceResponse
 
-class EventDetailsFragment : Fragment() {
 
-    private val viewModel: EventDetailsViewModel by viewModels()
+class ChekinFragment : Fragment() {
+
+    private val viewModel: CheckinViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_event_details, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_chekin, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getEventDetails("1").observe(viewLifecycleOwner, Observer {
-
+        viewModel.doCheckin().observe(viewLifecycleOwner, Observer {
             if (it is ServiceResponse.Success) {
-
+              
             }
-
         })
-
     }
-
 }

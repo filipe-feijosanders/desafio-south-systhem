@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/chekinFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -18,5 +18,14 @@
         android:id="@+id/eventDetailsFragment"
         android:name="com.filipesanders.desafio_south_systhem.ui.scenes.eventDetails.EventDetailsFragment"
         android:label="fragment_event_details"
-        tools:layout="@layout/fragment_event_details" />
+        tools:layout="@layout/fragment_event_details">
+        <action
+            android:id="@+id/action_eventDetailsFragment_to_chekinFragment"
+            app:destination="@id/chekinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chekinFragment"
+        android:name="com.filipesanders.desafio_south_systhem.ui.scenes.checkin.ChekinFragment"
+        android:label="fragment_chekin"
+        tools:layout="@layout/fragment_chekin" />
 </navigation>
