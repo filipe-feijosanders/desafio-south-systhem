@@ -6,4 +6,5 @@
     <string name="network_error">Falha de conexão</string>
     <string name="unknown_error">Erro desconhecido</string>
     <string name="events_error">Falha ao obter eventos</string>
+    <string name="event_error">Falha ao obter informações do evento</string>
 </resources>

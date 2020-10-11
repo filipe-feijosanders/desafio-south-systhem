@@ -10,8 +10,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.filipesanders.desafio_south_systhem.R
+import com.filipesanders.desafio_south_systhem.businessLogic.models.EventDetailsResponse
+import com.filipesanders.desafio_south_systhem.businessLogic.models.EventsResponse
 import com.filipesanders.desafio_south_systhem.services.ServiceResponse
+import com.filipesanders.desafio_south_systhem.ui.scenes.events.EventsAdapter
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -19,6 +25,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.events_home.*
+import kotlinx.android.synthetic.main.events_list_cell.view.*
+import kotlinx.android.synthetic.main.fragment_event_details.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -45,12 +54,18 @@ class EventDetailsFragment : Fragment(), OnMapReadyCallback,
             childFragmentManager.findFragmentById(R.id.fragmentMap) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        viewModel.getEventDetails(args?.eventId).observe(viewLifecycleOwner, Observer {
+        fetchEvent()
 
-            if (it is ServiceResponse.Success) {
-
+        viewModel.isEventResponseSucess.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                if (it) {
+                    eventContainer.visibility = View.VISIBLE
+                    eventError.visibility = View.GONE
+                } else {
+                    eventContainer.visibility = View.GONE
+                    eventError.visibility = View.VISIBLE
+                }
             }
-
         })
 
     }
@@ -84,5 +99,68 @@ class EventDetailsFragment : Fragment(), OnMapReadyCallback,
     }
 
     override fun onMarkerClick(p0: Marker?) = false
+
+    private fun fetchEvent() {
+        viewModel.getEventDetails(args?.eventId).observe(viewLifecycleOwner, Observer {
+
+            onEventResponse(it)
+
+        })
+    }
+
+    private fun onEventResponse(response: ServiceResponse<EventDetailsResponse>) {
+        when (response) {
+            is ServiceResponse.Success -> {
+                onSucess(response)
+            }
+            is ServiceResponse.Error.GenericError -> {
+                onError()
+            }
+            is ServiceResponse.Error.NetworkError -> {
+                onNetworkError()
+            }
+            else -> {
+                onUnknownError()
+            }
+        }
+    }
+
+    private fun onSucess(response: ServiceResponse.Success<EventDetailsResponse>) {
+        viewModel.setIsEventResponseSucess(true)
+        eventTitle.text = response.value?.title
+        eventPrice.text = response.value?.price
+        eventDate.text = response.value?.date
+
+        eventDescription.text = response.value?.description
+
+        Glide.with(eventImage)
+            .load(response?.value?.image)
+            .error(R.drawable.image_error)
+            .transform(
+                MultiTransformation(
+                    CenterCrop()
+                )
+            )
+            .into(eventImage)
+
+        eventCheckin.setOnClickListener {
+
+        }
+    }
+
+    private fun onNetworkError() {
+        viewModel.setIsEventResponseSucess(false)
+        eventError.text = getString(R.string.network_error)
+    }
+
+    private fun onUnknownError() {
+        viewModel.setIsEventResponseSucess(false)
+        eventError.text = getString(R.string.unknown_error)
+    }
+
+    private fun onError() {
+        viewModel.setIsEventResponseSucess(false)
+        eventError.text = getString(R.string.event_error)
+    }
 
 }
