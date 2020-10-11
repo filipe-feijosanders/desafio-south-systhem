@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/chekinFragment">
+    app:startDestination="@id/eventsFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/eventsFragment"
         android:name="com.filipesanders.desafio_south_systhem.ui.scenes.events.EventsFragment"
-        android:label="fragment_home"
+        android:label="fragment_events"
         tools:layout="@layout/events_home">
         <action
             android:id="@+id/action_homeFragment_to_eventDetailsFragment"

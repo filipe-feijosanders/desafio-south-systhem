@@ -1,7 +1,11 @@
 package com.filipesanders.desafio_south_systhem.businessLogic.models
 
+import android.os.Parcelable
+import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class EventsResponse(
 
     @SerializedName("people")
@@ -31,4 +35,17 @@ data class EventsResponse(
     @SerializedName("id")
     val id: String? = null
 
-)
+) : Parcelable {
+
+    class Diffutil : DiffUtil.ItemCallback<EventsResponse>() {
+        override fun areItemsTheSame(oldItem: EventsResponse, newItem: EventsResponse): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: EventsResponse, newItem: EventsResponse): Boolean {
+            return oldItem == newItem
+        }
+
+    }
+
+}

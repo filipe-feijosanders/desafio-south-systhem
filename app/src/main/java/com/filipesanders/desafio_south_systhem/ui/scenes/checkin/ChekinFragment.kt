@@ -29,7 +29,7 @@ class ChekinFragment : Fragment() {
 
         viewModel.doCheckin().observe(viewLifecycleOwner, Observer {
             if (it is ServiceResponse.Success) {
-              
+
             }
         })
     }

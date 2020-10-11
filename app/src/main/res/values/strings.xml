@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">desafio-south-systhem</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Feedback -->
+    <string name="network_error">Falha de conexão</string>
+    <string name="unknown_error">Erro desconhecido</string>
+    <string name="events_error">Falha ao obter eventos</string>
 </resources>

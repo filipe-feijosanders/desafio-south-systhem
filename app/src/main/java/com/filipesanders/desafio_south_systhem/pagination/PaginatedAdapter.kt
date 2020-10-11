@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.*
 import com.filipesanders.desafio_south_systhem.R
 
-
 abstract class PaginatedAdapter<T, VH : RecyclerView.ViewHolder>(
     private val context: Context,
     diffUtil: DiffUtil.ItemCallback<T>,
