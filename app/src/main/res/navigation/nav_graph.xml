@@ -22,6 +22,18 @@
         <action
             android:id="@+id/action_eventDetailsFragment_to_chekinFragment"
             app:destination="@id/chekinFragment" />
+        <argument
+            android:name="eventId"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="latitude"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="longitude"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/chekinFragment"

@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
@@ -47,6 +48,18 @@ class EventsAdapter() : RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
                     )
                 )
                 .into(eventsImage)
+
+            this.setOnClickListener {
+
+                findNavController().navigate(
+                    EventsFragmentDirections.actionHomeFragmentToEventDetailsFragment(
+                        eventId = item?.id,
+                        latitude = item?.latitude,
+                        longitude = item?.longitude
+                    )
+                )
+
+            }
         }
     }
 
