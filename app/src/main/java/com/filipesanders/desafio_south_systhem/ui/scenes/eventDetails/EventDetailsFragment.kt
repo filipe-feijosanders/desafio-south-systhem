@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -54,7 +55,10 @@ class EventDetailsFragment : Fragment(), OnMapReadyCallback,
             childFragmentManager.findFragmentById(R.id.fragmentMap) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        fetchEvent()
+        eventPeople.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = PeopleAdapter()
+        }
 
         viewModel.isEventResponseSucess.observe(viewLifecycleOwner, Observer {
             if (it != null) {
@@ -68,6 +72,7 @@ class EventDetailsFragment : Fragment(), OnMapReadyCallback,
             }
         })
 
+        fetchEvent()
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
@@ -142,6 +147,8 @@ class EventDetailsFragment : Fragment(), OnMapReadyCallback,
                 )
             )
             .into(eventImage)
+
+        (eventPeople.adapter as PeopleAdapter).submitList(response?.value?.people ?: ArrayList())
 
         eventCheckin.setOnClickListener {
 
