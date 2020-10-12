@@ -24,9 +24,8 @@ class EventsAdapter() : RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
     var listItem: ArrayList<EventsResponse> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.events_list_cell, parent, false)
-
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.events_list_cell, parent, false)
         return ViewHolder(view)
     }
 

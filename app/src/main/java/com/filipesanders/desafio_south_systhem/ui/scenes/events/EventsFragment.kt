@@ -12,9 +12,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.filipesanders.desafio_south_systhem.R
 import com.filipesanders.desafio_south_systhem.businessLogic.models.EventsResponse
 import com.filipesanders.desafio_south_systhem.services.ServiceResponse
+import com.filipesanders.desafio_south_systhem.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.events_home.*
 
-class EventsFragment : Fragment() {
+class EventsFragment : BaseFragment() {
+
+    override val showButtonBack: Boolean = false
+
+    override val showShare: Boolean = false
+
+    override val title: String = "Eventos"
 
     private val viewModel: EventsViewModel by viewModels()
 
