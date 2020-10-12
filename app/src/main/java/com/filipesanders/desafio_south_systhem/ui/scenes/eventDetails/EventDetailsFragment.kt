@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ShareCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -19,6 +20,7 @@ import com.filipesanders.desafio_south_systhem.R
 import com.filipesanders.desafio_south_systhem.businessLogic.models.EventDetailsResponse
 import com.filipesanders.desafio_south_systhem.businessLogic.models.EventsResponse
 import com.filipesanders.desafio_south_systhem.services.ServiceResponse
+import com.filipesanders.desafio_south_systhem.ui.base.BaseFragment
 import com.filipesanders.desafio_south_systhem.ui.scenes.events.EventsAdapter
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -30,11 +32,18 @@ import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.events_home.*
 import kotlinx.android.synthetic.main.events_list_cell.view.*
 import kotlinx.android.synthetic.main.fragment_event_details.*
+import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class EventDetailsFragment : Fragment(), OnMapReadyCallback,
+class EventDetailsFragment : BaseFragment(), OnMapReadyCallback,
     GoogleMap.OnMarkerClickListener {
+
+    override val showButtonBack: Boolean = true
+
+    override val showShare: Boolean = true
+
+    override val title: String = "Detalhes do evento"
 
     private val viewModel: EventDetailsViewModel by viewModels()
 
@@ -152,7 +161,18 @@ class EventDetailsFragment : Fragment(), OnMapReadyCallback,
         (eventPeople.adapter as PeopleAdapter).submitList(response?.value?.people ?: ArrayList())
 
         eventCheckin.setOnClickListener {
-            findNavController().navigate(EventDetailsFragmentDirections.actionEventDetailsFragmentToChekinFragment(args?.eventId))
+            findNavController().navigate(
+                EventDetailsFragmentDirections.actionEventDetailsFragmentToChekinFragment(
+                    args?.eventId
+                )
+            )
+        }
+
+        toolbarShare.setOnClickListener {
+            shareEvent(
+                response.value?.title.toString(),
+                response.value?.title.toString() + "\n \n" + response.value?.description.toString()
+            )
         }
     }
 
@@ -169,6 +189,16 @@ class EventDetailsFragment : Fragment(), OnMapReadyCallback,
     private fun onError() {
         viewModel.setIsEventResponseSucess(false)
         eventError.text = getString(R.string.event_error)
+    }
+
+    private fun shareEvent(title: String, textToShare: String) {
+
+        val shareIntent = ShareCompat.IntentBuilder.from(requireActivity())
+            .setChooserTitle(title)
+            .setType("text/plan")
+            .setText(textToShare)
+            .createChooserIntent()
+        startActivity(shareIntent)
     }
 
 }
