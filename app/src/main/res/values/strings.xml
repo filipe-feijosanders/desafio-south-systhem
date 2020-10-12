@@ -17,4 +17,6 @@
     <string name="checkin_fail_title">Falha ao realizar check-in</string>
     <string name="checkin_back">Voltar</string>
     <string name="btn_ok">Ok</string>
+
+    <string name="location">Localização</string>
 </resources>

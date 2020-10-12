@@ -143,7 +143,7 @@ class EventDetailsFragment : BaseFragment(), OnMapReadyCallback,
     private fun onSucess(response: ServiceResponse.Success<EventDetailsResponse>) {
         viewModel.setIsEventResponseSucess(true)
         eventTitle.text = response.value?.title
-        eventPrice.text = response.value?.price
+        eventPrice.text = "R$"+response.value?.price
         eventDate.text = response.value?.date
 
         eventDescription.text = response.value?.description
