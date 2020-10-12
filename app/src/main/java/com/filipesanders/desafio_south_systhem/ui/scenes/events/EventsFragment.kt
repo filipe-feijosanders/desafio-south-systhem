@@ -55,6 +55,12 @@ class EventsFragment : BaseFragment() {
 
         })
 
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                eventsProgress.visibility = if (it) View.VISIBLE else View.GONE
+            }
+        })
+
         fetchEvents()
     }
 

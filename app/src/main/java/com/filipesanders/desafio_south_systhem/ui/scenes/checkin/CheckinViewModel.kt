@@ -10,6 +10,7 @@ import com.filipesanders.desafio_south_systhem.services.ServiceResponse
 import com.filipesanders.desafio_south_systhem.services.rest.checkin.CheckinServiceInterface
 import com.filipesanders.desafio_south_systhem.services.rest.checkin.CheckinServiceRest
 import com.filipesanders.desafio_south_systhem.utils.SingleLiveEvent
+import com.filipesanders.desafio_south_systhem.utils.onValueChange
 import kotlinx.coroutines.Dispatchers
 
 class CheckinViewModel(
@@ -19,16 +20,25 @@ class CheckinViewModel(
 
     var errorMessage: String = ""
 
+    private val _isLoading = SingleLiveEvent<Boolean>()
+    val isLoading: SingleLiveEvent<Boolean>
+        get() = _isLoading
+
     fun doCheckin(
         eventId: String?,
         name: String?,
         email: String?
     ): LiveData<ServiceResponse<Unit>> {
+
+        _isLoading.value = true
+
         return liveData(Dispatchers.IO) {
             val res = checkinService.checkin(
                 CheckinRequest(eventId = eventId, name = name, email = email)
             )
             emit(res)
+        }.onValueChange {
+            _isLoading.value = false
         }
     }
 

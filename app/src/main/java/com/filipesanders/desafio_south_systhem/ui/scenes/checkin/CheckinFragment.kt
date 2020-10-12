@@ -45,6 +45,15 @@ class CheckinFragment : BaseFragment() {
         doCheckin.setOnClickListener {
             doCheckin()
         }
+
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                checkinUserName.isEnabled = !it
+                checkinUserEmail.isEnabled = !it
+                checkinProgress.visibility = if (it) View.VISIBLE else View.GONE
+            }
+        })
+
     }
 
     private fun doCheckin() {
