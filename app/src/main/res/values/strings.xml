@@ -10,13 +10,14 @@
     <string name="btn_checkin">Check-in</string>
     <string name="name">Nome</string>
     <string name="email">E-mail</string>
-    <string name="btn_do_checkin">Realizar Check-in</string>
     <string name="checkin_sucess">Sucesso</string>
     <string name="checkin_sucess_title">Seu check-in foi realizado!</string>
     <string name="checkin_fail">Erro</string>
     <string name="checkin_fail_title">Falha ao realizar check-in</string>
+
     <string name="checkin_back">Voltar</string>
     <string name="btn_ok">Ok</string>
 
     <string name="location">Localização</string>
+    <string name="btn_do_checkin">Realizar Check-in</string>
 </resources>

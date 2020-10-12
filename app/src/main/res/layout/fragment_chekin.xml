@@ -4,45 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.scenes.checkin.ChekinFragment">
+    android:background="@color/bg_primary"
+    tools:context=".ui.scenes.checkin.CheckinFragment">
 
-    <TextView
-        android:id="@+id/checkinTxtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include layout="@layout/toolbar" />
 
     <EditText
         android:id="@+id/checkinUserName"
+        style="@style/text_Form_field"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkinTxtName" />
-
-    <TextView
-        android:id="@+id/checkinTxtEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkinUserName" />
+        android:layout_height="50dp"
+        android:layout_marginStart="50sp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/edit_text_round_stroke_form"
+        android:hint="@string/name"
+        app:layout_constraintBottom_toTopOf="@id/checkinUserEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/checkinUserEmail"
+        style="@style/text_Form_field"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="50sp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/edit_text_round_stroke_form"
+        android:hint="@string/email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkinTxtEmail" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/doCheckin"
-        android:layout_width="match_parent"
+        style="@style/btn_style"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/btn_pink"
         android:text="@string/btn_do_checkin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/checkinUserEmail" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

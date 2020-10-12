@@ -14,16 +14,23 @@ import androidx.navigation.fragment.navArgs
 import com.filipesanders.desafio_south_systhem.R
 import com.filipesanders.desafio_south_systhem.businessLogic.models.EventsResponse
 import com.filipesanders.desafio_south_systhem.services.ServiceResponse
+import com.filipesanders.desafio_south_systhem.ui.base.BaseFragment
 import com.filipesanders.desafio_south_systhem.ui.dialog.GenericDialogFragment
 import com.filipesanders.desafio_south_systhem.ui.scenes.events.EventsAdapter
 import kotlinx.android.synthetic.main.events_home.*
 import kotlinx.android.synthetic.main.fragment_chekin.*
 
-class ChekinFragment : Fragment() {
+class CheckinFragment : BaseFragment() {
+
+    override val showButtonBack: Boolean = true
+
+    override val showShare: Boolean = false
+
+    override val title: String = "Check-in"
 
     private val viewModel: CheckinViewModel by viewModels()
 
-    private val args: ChekinFragmentArgs by navArgs()
+    private val args: CheckinFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

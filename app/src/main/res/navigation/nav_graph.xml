@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/chekinFragment"
-        android:name="com.filipesanders.desafio_south_systhem.ui.scenes.checkin.ChekinFragment"
+        android:name="com.filipesanders.desafio_south_systhem.ui.scenes.checkin.CheckinFragment"
         android:label="fragment_chekin"
         tools:layout="@layout/fragment_chekin" >
         <argument
