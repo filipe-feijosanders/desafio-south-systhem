@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- espaços para o layout de detalhes -->
+    <dimen name="space20dp">20dp</dimen>
+    <dimen name="space15dp">15dp</dimen>
+
+    <dimen name="toolbarHeight">56dp</dimen>
+
+    <dimen name="progressSize">50dp</dimen>
+</resources>

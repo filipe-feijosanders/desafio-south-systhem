@@ -2,6 +2,8 @@ package com.filipesanders.desafio_south_systhem.services
 
 import androidx.annotation.Keep
 
+//Forma genérica de obtenção de respostas do servidor
+
 @Keep
 sealed class ServiceResponse<out T> {
 
