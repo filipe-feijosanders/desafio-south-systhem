@@ -36,7 +36,6 @@ class EventsAdapter() : RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
         with(view) {
 
             eventsTitle.text = item?.title
-            eventsDate.text = item?.date
 
             Glide.with(eventsImage)
                 .load(item?.image)

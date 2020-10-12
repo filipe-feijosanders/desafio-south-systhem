@@ -13,15 +13,26 @@
         android:id="@+id/eventsRecycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="56dp"
         android:clipToPadding="false"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/eventsShadow"
         tools:listitem="@layout/events_list_cell" />
+
+    <View
+        android:id="@+id/eventsShadow"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/shadow_gradient"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/eventsError"
