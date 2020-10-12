@@ -9,7 +9,6 @@ import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.filipesanders.desafio_south_systhem.R
 import com.filipesanders.desafio_south_systhem.businessLogic.models.People
-import kotlinx.android.synthetic.main.events_list_cell.view.*
 import kotlinx.android.synthetic.main.people_cell.view.*
 
 class PeopleAdapter : RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {

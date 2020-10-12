@@ -32,7 +32,7 @@ abstract class PaginatedDataSource<T> : MutableLiveData<PaginatedDataSource.Pagi
 
         isRequestingData.value = true
 
-        if(!silentRefresh) {
+        if (!silentRefresh) {
             postValue(PaginatedData(isLoadingInitial = true))
         }
 

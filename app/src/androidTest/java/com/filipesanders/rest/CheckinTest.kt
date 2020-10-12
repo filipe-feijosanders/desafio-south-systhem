@@ -3,7 +3,6 @@ package com.filipesanders.rest
 import com.filipesanders.desafio_south_systhem.businessLogic.models.CheckinRequest
 import com.filipesanders.desafio_south_systhem.services.ServiceResponse
 import com.filipesanders.desafio_south_systhem.services.rest.checkin.CheckinServiceRest
-import com.filipesanders.desafio_south_systhem.services.rest.eventDetails.EventDetailsServiceRest
 import com.filipesanders.desafio_south_systhem.services.rest.events.EventsServiceRest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

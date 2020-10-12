@@ -1,6 +1,5 @@
 package com.filipesanders.desafio_south_systhem.ui.scenes.events
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

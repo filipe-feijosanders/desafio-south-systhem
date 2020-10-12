@@ -113,11 +113,11 @@
             android:layout_height="40dp"
             android:background="@drawable/bg_button_accent_oval"
             android:scaleType="center"
-            android:src="@drawable/icon_close"
             app:layout_constraintBottom_toTopOf="@id/whiteBg"
             app:layout_constraintEnd_toEndOf="@id/whiteBg"
             app:layout_constraintStart_toEndOf="@id/whiteBg"
             app:layout_constraintTop_toTopOf="@id/whiteBg"
+            app:srcCompat="@drawable/icon_close"
             app:tint="@color/bg_white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

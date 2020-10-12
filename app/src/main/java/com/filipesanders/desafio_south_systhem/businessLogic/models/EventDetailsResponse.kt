@@ -1,7 +1,10 @@
 package com.filipesanders.desafio_south_systhem.businessLogic.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class EventDetailsResponse(
 
     @SerializedName("people")
@@ -31,4 +34,4 @@ data class EventDetailsResponse(
     @SerializedName("id")
     val id: String? = null
 
-)
+) : Parcelable

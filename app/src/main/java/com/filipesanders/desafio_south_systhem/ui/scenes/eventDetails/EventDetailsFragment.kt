@@ -1,15 +1,12 @@
 package com.filipesanders.desafio_south_systhem.ui.scenes.eventDetails
 
 import android.os.Bundle
-import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,10 +15,8 @@ import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.filipesanders.desafio_south_systhem.R
 import com.filipesanders.desafio_south_systhem.businessLogic.models.EventDetailsResponse
-import com.filipesanders.desafio_south_systhem.businessLogic.models.EventsResponse
 import com.filipesanders.desafio_south_systhem.services.ServiceResponse
 import com.filipesanders.desafio_south_systhem.ui.base.BaseFragment
-import com.filipesanders.desafio_south_systhem.ui.scenes.events.EventsAdapter
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -29,12 +24,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.events_home.*
-import kotlinx.android.synthetic.main.events_list_cell.view.*
 import kotlinx.android.synthetic.main.fragment_event_details.*
 import kotlinx.android.synthetic.main.toolbar.*
-import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class EventDetailsFragment : BaseFragment(), OnMapReadyCallback,
     GoogleMap.OnMarkerClickListener {
