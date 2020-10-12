@@ -76,22 +76,40 @@ class ChekinFragment : Fragment() {
     }
 
     private fun onSucess() {
-        GenericDialogFragment.newInstance("Sucesso", "Checkin com sucesso")
-            .setPositiveButtonOption("Voltar") {
+        GenericDialogFragment.newInstance(
+            getString(R.string.checkin_sucess_title),
+            getString(R.string.checkin_sucess)
+        )
+            .setPositiveButtonOption(getString(R.string.checkin_back)) {
                 findNavController().popBackStack()
             }
             .show(parentFragmentManager, "checkinSucess")
     }
 
     private fun onNetworkError() {
-
+        GenericDialogFragment.newInstance(
+            getString(R.string.checkin_fail_title),
+            getString(R.string.network_error)
+        )
+            .setPositiveButtonOption(getString(R.string.btn_ok))
+            .show(parentFragmentManager, "checkinError")
     }
 
     private fun onUnknownError() {
-
+        GenericDialogFragment.newInstance(
+            getString(R.string.checkin_fail_title),
+            getString(R.string.unknown_error)
+        )
+            .setPositiveButtonOption(getString(R.string.btn_ok))
+            .show(parentFragmentManager, "checkinError")
     }
 
     private fun onError() {
-
+        GenericDialogFragment.newInstance(
+            getString(R.string.checkin_fail_title),
+            getString(R.string.checkin_fail)
+        )
+            .setPositiveButtonOption(getString(R.string.btn_ok))
+            .show(parentFragmentManager, "checkinError")
     }
 }
