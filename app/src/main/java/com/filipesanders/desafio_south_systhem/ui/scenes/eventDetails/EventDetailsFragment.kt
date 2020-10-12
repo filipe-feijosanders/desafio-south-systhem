@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -151,7 +152,7 @@ class EventDetailsFragment : Fragment(), OnMapReadyCallback,
         (eventPeople.adapter as PeopleAdapter).submitList(response?.value?.people ?: ArrayList())
 
         eventCheckin.setOnClickListener {
-
+            findNavController().navigate(EventDetailsFragmentDirections.actionEventDetailsFragmentToChekinFragment(args?.eventId))
         }
     }
 

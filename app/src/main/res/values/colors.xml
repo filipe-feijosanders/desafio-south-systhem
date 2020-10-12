@@ -3,4 +3,16 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="white_solid">#FFFFFF</color>
+    <color name="violet_red">#FC3884</color>
+    <color name="steel_gray">#231D38</color>
+    <color name="bg_primary">@color/steel_gray</color>
+    <color name="dialog_text">@color/steel_gray</color>
+    <color name="dialog_separator">@color/steel_gray_alpha_25</color>
+    <color name="dialog_text_button">@color/violet_red</color>
+    <color name="button_accent">@color/violet_red</color>
+    <color name="bg_white">@color/white_solid</color>
+
+    <color name="steel_gray_alpha_25">#40231D38</color>
 </resources>

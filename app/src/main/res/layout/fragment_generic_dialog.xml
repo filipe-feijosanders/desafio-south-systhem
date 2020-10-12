@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dialogContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="75dp">
+
+        <LinearLayout
+            android:id="@+id/whiteBg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_rounded_11"
+            android:orientation="vertical"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_min="207dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="300dp">
+
+            <TextView
+                android:id="@+id/dialogTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/proxima_nova_medium"
+                android:paddingHorizontal="24dp"
+                android:textAlignment="center"
+                android:textColor="@color/dialog_text"
+                android:textSize="18sp"
+                tools:text="@tools:sample/lorem[2]" />
+
+            <TextView
+                android:id="@+id/dialogMessage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/proxima_nova_medium"
+                android:gravity="center"
+                android:paddingHorizontal="24dp"
+                android:textAlignment="center"
+                android:textColor="@color/dialog_text"
+                android:textSize="16sp"
+                tools:text="@tools:sample/lorem[10]" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dialog_separator" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/positiveButton"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:padding="4dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dialog_text_button"
+                    android:textSize="15sp"
+                    tools:text="@tools:sample/lorem[0]" />
+
+                <View
+                    android:id="@+id/buttonDivider"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/dialog_separator"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <Button
+                    android:id="@+id/negativeButton"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/proxima_nova_bold"
+                    android:padding="4dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dialog_text_button"
+                    android:textSize="15sp"
+                    android:visibility="gone"
+                    tools:text="@tools:sample/lorem[1]"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/dialogCloseBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_button_accent_oval"
+            android:scaleType="center"
+            android:src="@drawable/icon_close"
+            app:layout_constraintBottom_toTopOf="@id/whiteBg"
+            app:layout_constraintEnd_toEndOf="@id/whiteBg"
+            app:layout_constraintStart_toEndOf="@id/whiteBg"
+            app:layout_constraintTop_toTopOf="@id/whiteBg"
+            app:tint="@color/bg_white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
