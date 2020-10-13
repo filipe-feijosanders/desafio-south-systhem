@@ -49,6 +49,13 @@ class CheckinFragment : BaseFragment() {
             }
         })
 
+        //Nesse app, defini para portrait a orientação pois não fiz um layout pensando nele virado.
+        //Caso pudesse ser virado, se o usuário já tivesse saldo algum dado então esse dado seria resgatado da viewModel
+        viewModel.checkin.observe(viewLifecycleOwner, Observer {
+            checkinUserName.setText(it.name)
+            checkinUserEmail.setText(it.email)
+        })
+
     }
 
     private fun doCheckin() {
@@ -59,8 +66,6 @@ class CheckinFragment : BaseFragment() {
         ) {
             viewModel.doCheckin(
                 args?.eventId,
-                checkinUserName.text.toString(),
-                checkinUserEmail.text.toString()
             ).observe(viewLifecycleOwner, Observer {
                 onCheckinResponse(it)
             })

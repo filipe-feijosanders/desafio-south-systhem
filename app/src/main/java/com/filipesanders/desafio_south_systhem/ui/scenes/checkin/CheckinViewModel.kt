@@ -1,6 +1,7 @@
 package com.filipesanders.desafio_south_systhem.ui.scenes.checkin
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.filipesanders.desafio_south_systhem.businessLogic.models.CheckinRequest
@@ -18,6 +19,18 @@ class CheckinViewModel(
     private val checkinValidator: CheckinValidationInterface = CheckinValidation()
 ) : ViewModel() {
 
+    data class Checkin(
+        var name: String? = null,
+        var email: String? = null
+    )
+
+    private val _checkin: MutableLiveData<Checkin> = MutableLiveData(
+        Checkin()
+    )
+
+    val checkin: LiveData<Checkin>
+        get() = _checkin
+
     var errorMessage: String = ""
 
     private val _isLoading = SingleLiveEvent<Boolean>()
@@ -25,16 +38,18 @@ class CheckinViewModel(
         get() = _isLoading
 
     fun doCheckin(
-        eventId: String?,
-        name: String?,
-        email: String?
+        eventId: String?
     ): LiveData<ServiceResponse<Unit>> {
 
         _isLoading.value = true
 
         return liveData(Dispatchers.IO) {
             val res = checkinService.checkin(
-                CheckinRequest(eventId = eventId, name = name, email = email)
+                CheckinRequest(
+                    eventId = eventId,
+                    name = _checkin.value?.name,
+                    email = _checkin.value?.email
+                )
             )
             emit(res)
         }.onValueChange {
@@ -47,15 +62,24 @@ class CheckinViewModel(
         email: String?
     ): Boolean {
 
-        if (!checkinValidator.isNameNotEmpty(name)) {
+        _isLoading.value = true
+
+        _checkin.value?.name = name
+        _checkin.value?.email = email
+
+        if (!checkinValidator.isNameNotEmpty(_checkin.value?.name)) {
             errorMessage = "Nome inválido"
+            _isLoading.value = false
             return false
         }
 
-        if (!checkinValidator.isEmailValid(email)) {
+        if (!checkinValidator.isEmailValid(_checkin.value?.email)) {
             errorMessage = "E-mail inválido"
+            _isLoading.value = false
             return false
         }
+
+        _isLoading.value = false
 
         return true
     }

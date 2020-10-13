@@ -19,6 +19,8 @@
         android:layout_marginBottom="50dp"
         android:background="@drawable/edit_text_round_stroke_form"
         android:hint="@string/name"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords"
         app:layout_constraintBottom_toTopOf="@id/checkinUserEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -32,6 +34,8 @@
         android:layout_marginEnd="50dp"
         android:background="@drawable/edit_text_round_stroke_form"
         android:hint="@string/email"
+        android:imeOptions="actionDone"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
